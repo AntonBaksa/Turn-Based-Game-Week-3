@@ -3,6 +3,8 @@ using static UnityEngine.UI.CanvasScaler;
 
 public class MovePieceAction : GamePiece.Action
 {
+    private Vector2Int tile;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,8 +16,8 @@ public class MovePieceAction : GamePiece.Action
     {
         
     }
-   /* public MovePieceAction(GamePiece piece, Vector2Int targetTile) : base(GamePiece)
+    public MovePieceAction(GamePiece piece, Vector2Int targetTile)
     {
-        m_vTargetTile = vTargetTile;
-    }*/
+        tile = targetTile;
+    }
 }

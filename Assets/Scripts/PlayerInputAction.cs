@@ -26,10 +26,11 @@ public class PlayerInputAction : GamePiece.Action
 
             float distance;
 
-           /* if (ground.Raycast(mouseRay, out distance))
+            if (ground.Raycast(mouseRay, out distance))
             {
                 Vector3 hit = mouseRay.GetPoint(distance);
-                Vector2Int hitTile = new Vector2Int(hit.x, hit.y);
+
+                Vector2Int hitTile = Board.ToXZ(hit);
 
                 if (tiles.Contains(hitTile))
                 {
@@ -38,19 +39,11 @@ public class PlayerInputAction : GamePiece.Action
                 }
             }
 
-            if (ground.Raycast(mouseRay, out distance))
-            {
-                Vector3 vHitPos = mouseRay.GetPoint(distance);
-
-                // new move target?
-                if (Input.GetMouseButtonDown(0))
-                {
-                    target.position = vHitPos;
-                }
-
-                // update target
-                Vehicle.MoveTarget = target;
-            }*/
         }
+    }
+
+    public override bool IsDone()
+    {
+        return done;
     }
 }
