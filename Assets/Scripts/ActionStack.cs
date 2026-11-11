@@ -26,7 +26,24 @@ public class ActionStack : MonoBehaviour
 
     private static ActionStack main;
 
+    public List<IAction> Stack => actionStack;
+    public IAction CurrentAction => currentAction;
     public bool IsEmpty => currentAction == null && actionStack.Count == 0;
+
+    public static ActionStack Main
+    {
+        get
+        {
+            if (main == null && Application.isPlaying)
+            {
+                GameObject go = new GameObject("MainActionStack");
+                DontDestroyOnLoad(go);
+                main = go.AddComponent<ActionStack>();
+            }
+
+            return main;
+        }
+    }
 
     public void PushAction(IAction action)
     {
