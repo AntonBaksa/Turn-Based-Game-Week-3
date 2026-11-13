@@ -1,11 +1,15 @@
+using System;
 using UnityEngine;
 
-public abstract class GamePiece : ActionStack.Action
+public enum Team
 {
-    public abstract class Action : ActionStack.Action
-    {
-        private GamePiece piece;
+    Red,
+    Blue
+}
 
-        public GamePiece GamePiece => piece;
-    }
+public class GamePiece : MonoBehaviour
+{
+    [SerializeField] private Team team;
+    public Team Team => team;
+    public Vector2Int? Tile {  get; set; }
 }
