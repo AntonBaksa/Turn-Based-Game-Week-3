@@ -100,6 +100,8 @@ public class PlayerInputAction : ActionStack.Action
         if (Board.Instance.HasLine(team))
         {
             Debug.Log($"{team} team Won!");
+            Board.Instance.EndGame();
+            return;
         }
 
         //Switch team every turn

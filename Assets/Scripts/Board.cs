@@ -10,6 +10,7 @@ public class Board : MonoBehaviour
 
     [SerializeField] private LayerMask pieceMask;
 
+    [SerializeField] private GameObject endScreen;
   
     private void Awake()
     {
@@ -73,5 +74,27 @@ public class Board : MonoBehaviour
         if (TilePiece(0, 2, team) && TilePiece(1, 1, team) && TilePiece(2, 0, team)) return true;
 
         return false;
+    }
+
+    public void EndGame()
+    {
+        endScreen.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    private void OnGUI()
+    {
+        Rect r1 = new Rect(10, 10, 600, 64);
+        Rect r2 = new Rect(10, 50, 600, 64);
+        Rect r3 = new Rect(10, 90, 600, 64);
+        GUI.color = Color.black;
+
+        GUIStyle style = new GUIStyle(GUI.skin.label);
+        style.fontSize = 30;
+        style.fontStyle = FontStyle.Bold;
+
+        GUI.Label(r1, "TicTacToe/Tre i rad:", style);
+        GUI.Label(r2, "Click LMB to Select Piece to move", style);
+        GUI.Label(r3, "Click LMB to Select Tile to move to", style);
     }
 }
